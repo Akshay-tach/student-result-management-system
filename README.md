@@ -88,6 +88,8 @@ If Git reports that `origin` already exists, use `git remote set-url origin http
 
 The demo accounts are not created automatically in production. Run `python seed.py` only for a learning/demo deployment after the database is available, then change the demo passwords.
 
+To create the larger demo dataset, run `python seed_bulk.py` in the Railway service console. It creates 20 teachers (`teacher01` through `teacher20`) and 120 students (`student001` through `student120`), all using the demo passwords shown by the script.
+
 ## Notes
 
 - The application uses parameterized SQL queries and password hashes.
