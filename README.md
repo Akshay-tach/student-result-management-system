@@ -74,6 +74,20 @@ These are demonstration credentials. Change them before using real student infor
 
 If Git reports that `origin` already exists, use `git remote set-url origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git` before pushing. To make later updates: `git add .`, `git commit -m "Describe your change"`, and `git push`.
 
+## Deploy on Railway
+
+1. Create a Railway project and add a **MySQL** service.
+2. Add this GitHub repository as a service.
+3. Link the MySQL service to the web service so Railway provides `MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, and `MYSQLDATABASE`.
+4. Add a private `SECRET_KEY` environment variable. Generate one with:
+   ```powershell
+   python -c "import secrets; print(secrets.token_urlsafe(32))"
+   ```
+5. Deploy. The included `Procfile` initializes the schema and starts Gunicorn automatically.
+6. Generate a public domain from the Railway service's **Settings** page.
+
+The demo accounts are not created automatically in production. Run `python seed.py` only for a learning/demo deployment after the database is available, then change the demo passwords.
+
 ## Notes
 
 - The application uses parameterized SQL queries and password hashes.
