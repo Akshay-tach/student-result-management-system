@@ -92,6 +92,8 @@ To create the larger demo dataset, run `python seed_bulk.py` in the Railway serv
 
 To add the five additional demo courses, run `python seed_courses.py` in the Railway service console.
 
+To create demo final results for every student in every course, run `python seed_results.py` in the Railway service console.
+
 ## Notes
 
 - The application uses parameterized SQL queries and password hashes.
