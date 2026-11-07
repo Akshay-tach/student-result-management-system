@@ -90,6 +90,8 @@ The demo accounts are not created automatically in production. Run `python seed.
 
 To create the larger demo dataset, run `python seed_bulk.py` in the Railway service console. It creates 20 teachers (`teacher01` through `teacher20`) and 120 students (`student001` through `student120`), all using the demo passwords shown by the script.
 
+To add the five additional demo courses, run `python seed_courses.py` in the Railway service console.
+
 ## Notes
 
 - The application uses parameterized SQL queries and password hashes.
