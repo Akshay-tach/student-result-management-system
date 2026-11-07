@@ -101,11 +101,12 @@ def dashboard():
         results = [dict(row, grade=grade_for(float(row["percentage"]))) for row in results]
         return render_template("student_dashboard.html", results=results, student_no=student["student_no"] if student else "Not linked")
     students = query("SELECT s.id, s.student_no, u.full_name, u.email, s.program, s.year_level FROM students s JOIN users u ON u.id=s.user_id ORDER BY u.full_name")
+    teachers = query("SELECT username, full_name, email FROM users WHERE role='teacher' ORDER BY full_name")
     courses = query("SELECT id, code, name FROM courses ORDER BY code")
     results = query("""SELECT r.id, u.full_name, s.student_no, c.code, c.name AS course, r.assessment, r.marks, r.max_marks
                       FROM results r JOIN students s ON s.id=r.student_id JOIN users u ON u.id=s.user_id
                       JOIN courses c ON c.id=r.course_id ORDER BY r.updated_at DESC LIMIT 100""")
-    return render_template("staff_dashboard.html", students=students, courses=courses, results=results)
+    return render_template("staff_dashboard.html", students=students, teachers=teachers, courses=courses, results=results)
 
 
 @app.route("/students", methods=["POST"])
