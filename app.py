@@ -60,6 +60,9 @@ def grade_for(mark):
     return "F"
 
 
+app.jinja_env.globals["grade_for"] = grade_for
+
+
 @app.route("/")
 def index():
     return redirect(url_for("dashboard") if session.get("user_id") else url_for("login"))
